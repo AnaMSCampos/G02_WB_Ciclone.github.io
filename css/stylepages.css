@@ -1,0 +1,1086 @@
+/* stylesheet - Ana M. Campos, Mariana Godinho, Inês Aleixo, Inês Ferreira */
+
+/*H1*/
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+
+/*H2*/
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+
+/*Corpo de Texto*/
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+
+/*Paleta de cores*/
+:root{
+    --primeira-cor: #FDFED1;
+    --segunda-cor: #8B628A;
+    --terceira-cor:  #CBB8BB;
+    --quarta-cor: #2ea29d;
+    --quinta-cor:#e1794c;
+    --sexta-cor: #95c69e;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    font-family:'Montserrat', 'Arial Narrow', Arial, sans-serif;
+}
+
+/* Versão Mobile */
+html,body{
+    width: 100%;  /*usa 100% do viewport (podia estar a trabalhar com vw) */
+    height: 100%;
+    font-size: 1.1em;
+    background-color: transparent;
+}
+
+#page{
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 100vh; /* medida da altura que obdece diretamente ao viewport (para a largura é vw) */
+    background-color:transparent;
+}
+
+
+/* Header (Título + Menu) */
+header{
+    display: block;
+    width: 100%;
+    margin-top: 24px;
+    background-image: linear-gradient(var(--primeira-cor),var(--primeira-cor),transparent);
+    z-index: 2;
+
+
+    font-family:'Montserrat', 'Arial Narrow', Arial, sans-serif;
+
+}
+
+#ciclone {
+    display: block;
+    position: relative;
+    margin-top: 25px;
+    width: calc(150px + 2vh);
+    left: 25px;
+}
+
+#ciclone:hover{
+    transform: rotate(-2deg);
+}
+
+/* Menu Móvel */
+.menu {
+    display: block;
+    position: fixed;
+    left: 85%;
+    top: 17px;
+    width: 35pt;
+    height: 35px;
+    cursor: pointer;
+    appearance: none;
+    background: none;
+    background-color: rgba(225,225,225,0.3);
+    padding: 0 10px 39px 10px;
+    border-radius: 100%;
+    outline: none;
+    border: none;
+    z-index: 101;
+
+}
+
+.menu .barras, .menu:after, .menu:before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 5px;
+    background-color:var(--segunda-cor);
+    margin: 6px 0px;
+    transition: 0.4s;
+}
+.menu.is-active:before {
+    transform: rotate(-45deg) translate(-8px, 6px);
+}
+
+.menu.is-active .barras {
+   opacity: 0;
+}
+
+.menu.is-active:after {
+    transform: rotate(45deg) translate(-9px, -8px);
+}
+
+.menumovel {
+    display:block;
+    position: fixed;
+    top: 0;
+    left: 100%;
+    width: 100%;
+    min-height: 100vh;
+    z-index: 98;
+    padding-top: 50px;
+    background-color: var(--primeira-cor);
+    transition: 0.4s;
+}
+
+.menumovel.is-active {
+    left: 0;
+}
+
+.menumovel a {
+    display: block;
+    text-align: center;
+    width: 100%;
+    max-width: 200px;
+    margin: 0 auto 16px;
+    padding: 12px 16px;
+    background-color:var(--terceira-cor);
+    color: var(--segunda-cor);
+    text-decoration: none;
+}
+
+.menumovel a {
+    background-color:var(--terceira-cor);
+    border-radius: 5px;
+}
+
+.menumovel a:hover {
+    background-color: #8B628A;
+    color: var(--terceira-cor);
+    transform: rotate(5deg) scale(1.1);
+}
+
+.menumovel a:hover:nth-child(2){
+    transform: rotate(-5deg);
+}
+
+.menumovel img{
+    display: block;
+    margin: 0 auto 10px auto;
+    width: calc(60px + 3vw);
+    animation: balao 6s ease-in-out infinite;
+}
+
+@keyframes balao {
+    0% {
+        transform: translateY(0px);
+    }
+
+    50%{
+        transform: translateY(-20px) rotate(-5deg);
+    }
+
+    75%{
+        transform: translateY(-40px); 
+    }
+
+    100%{
+        transform: translateY(-10px);
+    }
+}
+
+
+
+/* Body (Header + Main) */
+body{
+    background-color: var(--primeira-cor);
+}
+
+/* Main */
+main{
+    display: block;
+    position: relative;
+    padding-bottom: 20px;
+    margin: 0.5em 0 0 0;
+    overflow-x: hidden;
+}
+
+aside{
+    position: relative;
+    display: block;
+    max-width: 100px;
+    margin: 0 auto 0 auto;
+}
+
+/* Efeito Acordião .......................................................................*/
+
+.accordion{
+    display: block;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    max-width: 10000px;
+    z-index:1;
+}
+
+/* style de items */
+.accordion-item{
+    margin: 0;
+    background-color: var(--segunda-cor);
+    color: var(--primeira-cor);
+    box-shadow: 0 2px 8px 0 rgba(0,0,0,0.5);
+
+}
+
+/* style do header/da parte que aparece */
+.accordion-item-header {
+    display: flex;
+    position: relative;
+    padding: 0.2rem 3rem 0.2rem 3rem;
+    min-height: 3rem;
+    line-height: 1.25rem;
+    align-items: center;
+    font-weight: lighter;
+
+    /* Quando for fazer hover aparece para clicar */
+    cursor: pointer;
+}
+
+/* símbolo que se coloca antes e vai ser animado aquando clicar */
+.accordion-item-header::after{
+    /* entety do "+" no código corresponde a \002B */
+    content: "\002B";
+    font-size: 2rem;
+    position: absolute;
+    right: 1rem;
+    transition: transform 0.3s ease-in-out;
+}
+
+.accordion-item-header.active::after{
+    transform: rotate(90deg);
+}
+
+
+.accordion-item-header.active::after:hover , .accordion-item-header::after:hover{
+background-color: var(--terceira-cor);
+}
+
+/* símbolo de online/seleção */
+.accordion-item-header::before{
+    content: "\02689";
+    color: var(--sexta-cor);
+    font-size: 2rem;
+    position: absolute;
+    left: 1rem;
+    transition: transform 0.3s ease-in-out;
+} 
+
+.accordion-item-header.active::before{
+    color: var(--quinta-cor) ;
+    transform: rotate(180deg);
+}
+
+
+/* body do accordion */
+
+.accordion-item-body{
+    max-height: 0;
+    height: 80%;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+ 
+}
+
+.accordion-item-body-content {
+    padding: 1rem;
+    line-height: 1.1rem;
+    background-color:var(--primeira-cor);
+    border: 5px solid var(--segunda-cor);
+}
+
+/* Main */
+/* Aba 1 */
+/* face interior do texto */
+.card {
+    position: relative;
+    width: calc(200px + 1vw);
+    height: 300px; /* ajusta estes de acordo com o tamanho que queres*/
+    background-color: white;
+    border-radius: 10px;
+    transform-style: preserve-3d;
+    transform: perspective(500px);
+    transition: 1s;
+    z-index: 95;
+    left: 24%;
+    z-index: 200 ;
+}
+
+.card:hover {
+    /* transform: perspective(1000px) translate(50%); */
+    z-index: 0;
+}
+
+.card .cover {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: var(--terceira-cor);
+   z-index: 90;
+   display: flex;
+   justify-content:center;
+   align-items:center;
+   transform-style: preserve-3d;
+   overflow: hidden;
+   transition: 1s ease-in-out;
+   transform-origin: left;
+   border-radius: 10px;
+}
+
+.card .cover img {
+    width: 90%;
+    max-width: 100%;
+    z-index: 10;
+}
+
+.card:hover .cover {
+    transform: rotateY(-85deg);
+}
+
+.card .cover:before {
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 200%;
+    background: var(--quinta-cor);
+    transform: rotate(30deg);
+    box-shadow: 0 0 0 10px var(--quinta-cor);
+    transition: 0.5s;
+    transition-delay: 0.5s;
+
+}
+
+.card:hover .cover:before {
+    width: 0;
+    box-shadow: 0 0 0 250px var(--quinta-cor);
+    transform: rotate(10deg);
+    z-index: -1;
+  
+}
+
+/* Corpo de Texto */
+.card .details {
+    position: absolute;
+    top: 0;
+    left: 10px;
+    right: 10px;
+    padding: 0px 20px 10px 0px;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+    z-index:10;
+
+    /* scroll */
+    overflow-y: scroll;
+
+}
+
+.card .details h3 {
+    margin: 20px 0;
+}
+
+/* Aba 2 */
+#aba2 .accordion-item-body-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#aba2 .person-body{
+    padding-bottom: 20px;
+}
+
+/* Window-Door  */
+/* Door */
+#door{
+    display: flex;
+    justify-content: center;
+    align-items: hidden;
+}
+
+.door{
+    position: relative;
+    /* mudar tamanho */
+    width: calc(170px + 5vw);
+    height: calc(270px + 5vw);
+    transform-style: preserve-3d;
+    transform: perspective(2500px);
+
+    cursor: pointer;
+}
+
+.door-front{
+    position: absolute;
+    /* mudar tamanho */
+    width: calc(170px + 5vw);
+    height: calc(270px + 5vw);
+    transform-origin: left;
+    overflow: hidden;
+    box-shadow: 30px 0 50px rgba(0, 0, 0, 0.15);
+    z-index: 1;
+
+    /* Mudar cor */
+    background-color: var(--terceira-cor);
+
+    transition:0.5s;
+    transform: rotateY(-35deg);
+}
+
+.door-front:before, .door-front:after {
+    content: "";
+    position: absolute;
+    /* Cor = cor do .door-front */
+    background-image: url("../assets/images/textura.JPG");
+    background-size: contain;
+    /* mudar tamanho */
+    width: calc(105px + 1vw);
+    height: calc(75px + 1vw);
+    border: 10px ridge var(--primeira-cor);
+    left: calc(22.5px + 1vw);
+}
+
+.door-front:before {
+    top: calc(25px + 2vw);
+}
+
+.door-front:after {
+    top: calc(155px + 5vw);
+}
+
+.knob {
+    position: absolute;
+    width: calc(20px + 1vw);
+    height: calc(20px + 1vw);
+    top: calc(122px + 5vw);
+    right: calc(5px);
+
+    background-color: var(--segunda-cor);
+    border-radius: 50%;
+    box-shadow: 2px 3px 1px rgba(0, 0, 0, 0.15);
+}
+
+.carpet {
+    position: absolute;
+    left: calc(35px + 1vw);
+    top: calc(280px + 5vw);
+    background-color: var(--segunda-cor);
+    width: calc(80px + 5.5vw);
+    height: calc(50px + 5.5vw);
+    transform: rotatex(60deg);
+    border: 3px solid var(--terceira-cor);
+    box-shadow: 30px 0 50px rgba(0, 0, 0, 0.15);
+}
+
+.carpet h3 {
+    padding-top: 25%;
+    text-align: center;
+    color: var(--primeira-cor);
+    font-size: calc(1rem + 1.5vw);
+}
+
+/* hover que abre a porta */
+.door:hover .door-front {
+    transform: rotateY(-100deg);
+}
+
+.door-back {
+    position: relative;
+    background-image: url();
+    background-image: linear-gradient(to right, rgba(255,255,255,0.7), rgba(255,255,255,0.7)), url("https://assets.website-files.com/62fa09b13c6824e3ca3b6876/63132dfbad9f795efc024bde_Blue%20Mist.gif");
+    background-size: 140%;
+
+    overflow: hidden;
+    outline: 10px solid #eaead9;
+    width: 100%;
+    height: 100%;
+}
+
+/* ..ET.. */
+.door .content {
+    text-align: center;
+    margin-top: 20px;
+    padding: 0 20px;
+}
+
+.content1{
+    padding-bottom: 30px;
+    padding-top:calc(100px + 2vw) ;
+    padding-right: calc(10px + 2vw) ;
+    padding-left: calc(10px + 2vw);
+    /* padding: calc(100px + 2vw) calc(10px + 2vw); */
+}
+
+/* Aba 3 */
+/* faq */
+#faq-body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: var(--primeira-cor);
+}
+
+#faq-body section{
+    height: 1500px;
+    min-height: 1000px;
+}
+
+.faq-container{
+    margin: 0 40px;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+} 
+
+.faq-container h3 {
+    color: var(--segunda-cor);
+    z-index: 58;
+}
+
+.faq-container .tab{
+    position: relative;
+    background-color: #95c69e;
+    padding: 0 20px 20px;
+    box-shadow: 0 15px 25px var(--quarta-cor);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.faq-container .tab input{
+    appearance: none;
+}
+
+.faq-container .tab label{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.faq-container .tab label::after{
+    content: "\002B";
+    position: absolute;
+    right: 20px;
+    font-size: 2em;
+    color: var(--quinta-cor);  
+    transition: transform 1s; 
+    z-index: 50; 
+}
+
+.faq-container .tab:hover label::after {
+    color:var(--quarta-cor);
+    box-shadow: #2ea29d;
+    z-index: 50;
+}
+
+.faq-container .tab input:checked ~ label::after{
+    transform: rotate(135deg);
+    color: #fff;
+}
+
+/* label (parte do título da aba) */
+.faq-container .tab label h4{
+    width: 30px;
+    height: 30px;
+    background: var(--quinta-cor);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1em;
+    font-weight: 600;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.faq-container .tab input:checked ~ label h4{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    color: rgba(255, 255, 255, 0.2);
+    font-size: 8em;
+    justify-content: flex-end;
+    padding: 15px;
+}
+
+.faq-container .tab:nth-child(1) label h4{
+    background: linear-gradient(135deg);
+}
+
+.faq-container .tab label h5{
+    position: relative;
+    color: var(--primeira-cor);
+    z-index: 10;
+    width: 80%;
+    font-size: 0.8rem;
+
+}
+
+.faq-container .tab input:checked ~ label h5{
+    background: #fff;
+    padding: 2px 10px;
+    border-radius: 5px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    width: 90%;
+    color: var(--segunda-cor);
+}
+
+/* Abaixo é o que faz abrir e fechar as abas da FAQ */
+.faq-container .tab .faq-content{
+    max-height: 0;
+    transition: 1s;
+    overflow: hidden;
+}
+
+.faq-container .tab input:checked ~ .faq-content{
+    max-height: 100vh;
+}
+
+/* Corpo de Texto da Resposta */
+.faq-container .tab .faq-content p, .faq-container .tab .faq-content li {
+    position: relative;
+    padding: 10px 0;
+    color: var(--primeira-cor);
+    z-index: 10;
+}
+
+/* texto interior aquando a aba aberta */
+.faq-container .tab input:checked ~ .faq-content p, .faq-container .tab input:checked ~ .faq-content li{
+color: white;
+}
+
+.faq-container .tab .faq-content li{
+    margin: 0;
+    padding-top: 0;
+}
+
+/* Título */
+.faq-container h3{
+    text-align: center;
+    font-size: 1.25rem;
+
+    animation: flutuar1 6s ease-in-out infinite;
+    
+}
+
+@keyframes flutuar1 {
+    0%{
+        transform: translateY(0); 
+    }
+
+    25%{
+        transform: rotate(-3deg);
+    }
+
+    50%{
+        transform: translateY(-10px) rotate(3deg);
+    }
+
+    100%{
+        transform: translateY(0);
+    }
+}
+
+/* Aba 4 */
+.comments {
+    background-color: var(--terceira-cor);
+    padding: 10px;
+    border-radius: 15px;
+    margin: 50px;
+
+    animation: flutuar2 10s ease-in-out infinite;
+
+}
+
+.comments::after {
+    content: "";
+    display: block;
+    position: absolute;
+
+    left: 90px;
+
+    width: 0;
+    height: 0;
+    border-top: 16px solid transparent;
+    border-bottom: 16px solid transparent;
+    border-right: 30px solid var(--terceira-cor);
+    transform: rotate(30deg);
+
+}
+
+/* imagem do fundo */
+.img-fundo div{
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    display: block;
+}
+
+.img-fundo img{
+    width: 100%;
+}
+
+
+
+/* Imagem - Popup (ABA: 2,3,4) ----------------------- */
+/* imagem - pop-up */
+.person-body{
+    display: flex;
+
+}
+
+.person_card{
+    position: flex;
+    justify-content: center;
+
+}
+
+.img_container {
+    position: relative;
+    margin: auto;
+    width: 70px;
+    aspect-ratio: 1 / 1 ;
+    /* background-color: #8B628A; */
+    display: flex;
+    border-radius: 0 0 100vw 100vw;
+    overflow: hidden;
+    transition: transform 250ms ease-in-out;
+
+}
+
+.img_container:hover{
+    transform: scale(1.1);
+}
+
+.img_container .circle{
+    width: 100%;
+    aspect-ratio: 1;
+    background-color: var(--segunda-cor);
+    border-radius: 50%;
+
+}
+
+.img_container .person_img{
+    position: absolute;
+    width: 100%;
+    margin-top: 5px;
+    transform: scale(1.1);
+    transition: transform 400ms ease-in-out;
+    animation: flutuar2 10s ease-in-out infinite;
+}
+
+@keyframes flutuar2{
+    0%{
+        transform: translateY(0); 
+    }
+
+    40%{
+        transform: translateY(50px) rotate(-5deg);
+    }
+
+    50%{
+        transform: translateY(25px) rotate(5deg);
+    }
+
+    100%{
+        transform: translateY(0);
+    }
+}
+
+.img_container:hover .person_img{
+    transform: scale(1.125) translateY(-5px);
+}
+
+/* texto abaixo */
+.person_info h4, .person_info span{
+    color: #8B628A !important;
+    text-align: center;
+}
+.person_info h4{
+    margin: 0;
+    padding: 0;
+    font-size: small;
+    text-align: center;
+}
+.person_info span{
+    font-size: 7pt;
+    text-align: center;
+}
+
+
+/* footer */
+footer{
+    position:relative;
+    display: block;
+    margin: 0 auto 20px auto;
+    font-size: 0.5em;
+    color: var(--segunda-cor);
+    background-color: transparent;
+    text-align: center;
+    font-family: 'Montserrat', 'Arial Narrow', Arial, sans-serif;
+}
+
+/* Elementos Textuais */
+h1{
+    margin: 1em 0 1rem 0;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: transparent;
+
+    background-image: url("../assets/images/textura.JPG");
+    background-size: 5%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+
+    animation: flutuar 6s ease-in-out infinite;
+}
+
+@keyframes flutuar {
+    0%{
+        transform: translateY(0); 
+    }
+
+    25%{
+        transform: rotate(-5deg);
+    }
+
+    50%{
+        transform: scale(1.1) translateY(-10px) rotate(5deg);
+    }
+
+    100%{
+        transform: translateY(0);
+    }
+}
+
+h2{
+    color:var(--primeira-cor);
+    font-weight:bolder;
+    font-style: italic;
+    font-size: 0.65rem;
+    background-color:var(--terceira-cor); 
+    border-radius: 20px;
+    padding-left: 8px;
+    width: 100%;
+    text-align: left;
+}
+
+h3{
+    color: var(--segunda-cor);
+    font-size: small;
+    font-weight: bold;
+}
+
+p,ul{
+    font-size: 11px;
+    padding-bottom: 5px;  /* Espaço entre os paragrafos */
+    color: var(--segunda-cor);
+}
+
+span.italico {
+    font-style: italic;
+    font-weight: 50;
+}
+
+/* Extras */
+/* Efeito Typewrite */
+.text{
+    text-align: right;
+    margin: 10px 0 10px 0;
+    text-align: right;
+    font-size: 0.90em;
+    border-right: 2px solid;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: typing 2s steps(8),cursor .4s step-end infinite alternate;
+}
+
+/* Cursor a piscar */
+@keyframes cursor{
+    50% { border-color: transparent;}
+}
+/* Botão - Topo */
+#link-topo {
+    color: var(--primeira-cor);
+    background-color: var(--quinta-cor);
+    padding:8px 5px 10px 10px;
+    position: fixed;
+    right:10px;
+    bottom: 10px;
+    border-radius: 50%;
+    box-shadow: 3px 3px 10px #575a5a;
+    text-decoration: none;
+    z-index: 91;
+
+    animation: flutuar3 10s infinite ease-in-out;
+}
+
+@keyframes flutuar3 {
+    0%,100% {
+        transform: translateY(0);
+    }
+
+    25% ,75% {
+        transform: translateY(-10px) rotate(5deg);
+    }
+
+    50% {
+        transform: rotate(-5deg);
+    }
+}
+
+/* ScrollBar */
+::-webkit-scrollbar, #aba1::-webkit-scrollbar{
+    width: 5px;
+    height: 5px;
+}
+
+/* barra do Scroll */
+::-webkit-scrollbar-track{
+    background-color:var(--terceira-cor);
+}
+
+/* botão do scroll */
+::-webkit-scrollbar-thumb{
+    background-color: var(--segunda-cor);
+    border: 2px 
+}
+
+::-webkit-scrollbar-thumb:hover{
+    background-color: var(--quarta-cor);
+}
+
+/* mouse */
+html{
+    cursor: url('../assets/')default;
+}
+
+@media screen and (min-width: 600px) {
+
+    #page{
+        display: block;
+        padding: 0 3em 0 3em;
+        height: auto;
+    }
+
+    /* header */
+    #ciclone{
+        width: 250px;
+        left: 20px;
+        top: -10px;
+    }
+
+    .menu{
+        top: 10px;
+        left: 95%;
+    }
+
+    /* main */
+    /* Aba 1 */
+    .card:hover {
+        transform: perspective(1000px) translate(60%);
+        z-index: 0;
+    }
+
+    .card:hover .cover {
+        transform: rotateY(-180deg);
+    }
+
+    .card {
+        position: relative;
+        width: 40%;
+        align-items: center;
+        background-color: white;
+        border-radius: 10px;
+        transform-style: preserve-3d;
+        transform: perspective(500px);
+        transition: 1s;
+        z-index: 100;
+        left: 24%;
+        z-index: 200 ;
+    }
+    
+    .card .cover img {
+        width: 80%; 
+        max-width: 100%;
+        top: 20px;
+        z-index: 3;
+    }
+
+    /* aba 2 */
+    .door-front:before, .door-front:after {
+        left: calc(22.5px + 2vw);
+    }
+    .door-front:before {
+        top: calc(25px + 1vw);
+    }
+    
+    .door-front:after {
+        top: calc(155px + 3vw);
+    }
+
+    .knob {
+        top: calc(122px + 2.5vw);
+    }
+
+    /* aba 4 */
+    .img-fundo img{
+        width: 100%;
+        margin-right: auto;
+        margin-left: auto;
+        margin-top: calc(-180px - 20vw);
+    }
+
+   
+
+    /* footer */
+    footer{
+        font-size: 0.5em !important;
+        color: var(--segunda-cor);
+        background-color: transparent;
+    }
+
+    /* Elementos Textuais */
+    h2{
+        font-size:calc(0.5rem + 1vh);
+        color: var(--primeira-cor);
+    }
+
+    h3{
+        font-size: calc(9px + 0.5vw);
+    }
+
+    p,ul{
+        font-size: 12px;
+    }
+
+
+
+    /* Extras */
+    /* ScrollBar */
+    ::-webkit-scrollbar{
+        width: 7px;
+        height: 7px;
+    }
+}
+
+
+
+/* Refs:
+Menu Móvel: https://www.youtube.com/watch?v=OFKBep95lb4&list=PLvtk8e8_q2m7z1LkhslEttqrOOfkzI0ww&index=1
+
+Efeito Card: https://www.youtube.com/watch?v=aqR-LuacnFo&list=PLvtk8e8_q2m7z1LkhslEttqrOOfkzI0ww&index=23
+
+Efeito Pop-up: https://www.youtube.com/watch?v=sLxM802bDV8&list=PLvtk8e8_q2m7z1LkhslEttqrOOfkzI0ww&index=28
+
+Efeito Faq: https://www.youtube.com/watch?v=FnpPvEUl010&list=PLvtk8e8_q2m7z1LkhslEttqrOOfkzI0ww&index=32 
+
+Efeito Acordeão - https://www.youtube.com/watch?v=dr8Emho-kYo&list=PLvtk8e8_q2m7z1LkhslEttqrOOfkzI0ww&index=3
+*/
